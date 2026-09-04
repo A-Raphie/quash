@@ -41,6 +41,9 @@ async function main(): Promise<void> {
     } catch (err) {
       console.log(`ERROR  ${c.text}: ${(err as Error).message}`);
     }
+    // Back-to-back browser searches drain the free-tier TPM bucket and the
+    // batch ends up throttling itself; spacing keeps runs honest.
+    await new Promise((r) => setTimeout(r, 45_000));
   }
   console.log(`\n${ok}/${CLAIMS.length} in expected band`);
   process.exit(0);
