@@ -1,0 +1,25 @@
+{
+  "name": "quash",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Quash. Text it the rumor, it tapbacks the lie with sources. An iMessage fact-checker on Photon.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "start": "tsx src/index.ts",
+    "start:mock": "tsx src/run-mock.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "spectrum-ts": "^12.8.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}

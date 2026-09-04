@@ -1,0 +1,10 @@
+# Design Ledger
+
+One line per project. Before finalizing any direction brief, check the last 3 entries: no repeated axis-pair combos, no repeated signature-move mechanics. Retro entries reconstructed Sep 1 2026 from shipped code.
+
+2026-05 | claimcheck (retro) | axes: cream legal-document light, verdict-card grammar | signature: verdict cards with precision stats | palette #F7F1E8 #141311 #9C3B24 #14C79A
+2026-08 | purser (retro) | axes: dark treasurer panel, widget dashboard | signature: live treasury/x402 widget in hero | palette dark neutral + green accent
+2026-09 | hansei (retro) | axes: feed/journal metaphor | signature: graded reflection feed | palette neutral light
+2026-09 | rushes | axes: Solari-bone paper light (#E7E7E2) + amber grease-pencil accent (#F5B301) + mono-first (JetBrains Mono) + document/ledger layout + stillness | signature: THE CUTTING BENCH, fused with catalog effect interactive-product-screenshot (landing IS the bench, one shared UI package); scroll-journey film line + light-table/screening-room toggle adopted, parallax rejected | palette #E7E7E2 paper #0F1514 ink/film-stage #F5B301 amber #2A3C3A hairlines (all mined from getsolari.com CSS Sep 1 2026)
+2026-09 | assay | axes: Binance-black mined theme (#181A20/#202630/#333B47) + double-yellow accent (#F0B90B brand, #FCD535 action) + document/ledger Docket certificates + hairline elevation + stamp-strike motion only | signature: THE ASSAY STAMP (order card physically resized/denied with rule citation struck in, live at demo money moment) | palette #181A20 #202630 #EAECEF #F0B90B #FCD535 #2EBD85 #F6465D #333B47 (mined from binance.com live theme Sep 4, not guessed)
+2026-09 | quash | axes: iMessage-native chat grammar (convention IS the anchor) + copy-editor terse voice + typing-suspense choreography + stillness elsewhere | signature: THE TAPBACK LANDS ON THE LIE (native tapback strikes the forwarded claim as the verdict glyph, sourced verdict threads under it) | palette #252525 #2F2F2F #4D4D4D #666666 #999999 #C5C5C5 #EEEEEE #00BBFF #FF3366 (mined from photon.codes live CSS Sep 4, not guessed; Apple system colors carry in-chat semantics)
