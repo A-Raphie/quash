@@ -12,7 +12,7 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [x] Mock-provider unit tests for triage + verify (no creds needed) — done 2026-09-04, 11/11 passing offline
 
 ## Phase 1 — MVP (Sep 6)
-- [~] Calibration: search + verify over 5 fixed claims — engine rewired to gpt-oss-120b + built-in browser_search after groq/compound 413'd; first live run in progress
+- [~] Calibration: search + verify over 5 fixed claims — engine proven across partial runs (Paris REFUTED 15.7s 3 src Guardian; coffee REFUTED Harvard; water VERIFIED 3 src; UN-holiday REFUTED un.org; roast lines on-voice). Batch mode self-throttled on free-tier TPM: paced 45s between claims, finish the full 5-claim run fresh tomorrow (Sep 5) and record numbers in README honesty section.
 - [ ] Full pipeline: triage → search → verify → tapback → threaded verdict → typing indicator — done when a real false claim gets tapdown + sourced thread under 60s
 - [ ] Roast mode one-liner (flag, default on) — done when the one-liner lands after sources, dry not cringe
 - [ ] Guardrails: `stop` command, allowlist double-check, claim length cap — done when stop halts the loop and non-registered senders get ignored
