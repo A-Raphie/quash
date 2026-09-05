@@ -4,6 +4,11 @@ Running log of decisions, conventions, and gotchas. Newest at the top.
 
 ## Decisions
 
+- **2026-09-04** — Photon account already existed (arnxto@gmail.com, Google OAuth, "Legend"); signed in via the IAB's live Google session, no signup needed. Generated email+password in .env is therefore unused; kept in case a fallback login is ever needed. Dedicated project **quash** created for the contest: Project ID dc3cc640-ad0c-4729-8dd8-ecca7ca383ca (secret in .env, both QUASH_* and SPECTRUM_* spellings). The pre-existing "HQ" project (02730355-0ffd-41d2-903d-7eb57782f24f) stays untouched.
+- **2026-09-04** — Dashboard quirks: signup/login pages render but expose empty ARIA trees (drive via evaluate + native setters); phone enrollment wall is `account_phone_missing` on the Get started page until a phone is added from the avatar menu (nested menu is flaky under synthetic clicks: real-pointer or hand-driven).
+
+- **2026-09-04** — Photon account identity: arnxto@gmail.com (the hackathon account email, same as app-ryochan.com "Legend"). Credentials live in quash/.env (PHOTON_ACCOUNT_EMAIL/PASSWORD), gitignored, never in transcript or repo. Signup form driven via IAB; Create account click held for his go per the notify-gate rule.
+
 - **2026-09-04** — Name: **Quash** (archaic-legal verb, to kill a claim). Finalists: stet, errata. Quash won the hook-sentence test and reads as an action, fitting "Most useful". Repo A-Raphie/quash free, zero contest collisions.
 - **2026-09-04** — Concept: group-chat fact-checker, "Community Notes for iMessage" framing. Chosen via hackathon-idea-hack against an exclusion list (the field is a flood of Codex/Claude-in-iMessage clones). Reuses the claimcheck verification thesis; engine ports (agent.ts, verifier.ts), sandbox does not.
 - **2026-09-04** — Transport: Photon Spectrum Cloud (free tier), NOT imessage-local. The typeform requires a Photon Project ID; cloud needs no Full Disk Access; local mode lacks reactions (the signature mechanic).
