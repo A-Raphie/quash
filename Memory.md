@@ -34,6 +34,7 @@ Running log of decisions, conventions, and gotchas. Newest at the top.
 - Groq free tier: 429s are normal on gpt-oss-120b; the claimcheck client paces off the server's "try again in Ns" hint. Keep that port intact. Browser-search calls run long (30s+); request timeout raised to 120s.
 - Spectrum API shapes verified from installed types 2026-09-04: `Spectrum({projectId, projectSecret, providers: [imessage.config()]})`; `for await (const [space, message] of app.messages)`; `message.react/reply/read`, `space.responding(fn)`; inbound text at `message.content` (object with `text` field).
 - No scheduled-send API in Spectrum: never promise delayed sends.
+- **Shared-pool lines reject email-handle senders (verified live 2026-09-07):** texts sent from an @icloud.com handle get an autoreply ("can't route it to the right agent... only supports phone numbers") and never reach the agent stream. Fix is on the sender's device: Settings → Messages → Send & Receive, "Start new conversations from" must be the enrolled phone number (+234...), then start a FRESH thread to the line (the old thread stays tied to the email identity). Business dedicated lines accept both, but that costs $250/line.
 - Compound model output shape differs from plain chat completions (executed tools + search results); verify the response parsing on first call.
 
 ## Things to not forget
