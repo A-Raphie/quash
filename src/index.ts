@@ -31,26 +31,38 @@ async function main(): Promise<void> {
     counts: () => log.counts(),
   };
 
-  const transport = await createSpectrumTransport({
-    projectId: config.projectId,
-    projectSecret: config.projectSecret,
-  });
-
   console.error("quash: connected. waiting for claims.");
-  for await (const message of transport.messages()) {
-    if (state.stopped) break;
-    if (!isAllowed(config, message.senderId)) {
-      console.error(`ignored non-allowlisted sender ${message.senderId}`);
-      continue;
-    }
-    if (!message.text.trim()) continue;
+  // Transient gRPC drops (network flap, token renewal) must never kill the
+  // agent: the SDK's internal reconnect gives up after a few tries, so the
+  // whole transport gets rebuilt with backoff here.
+  while (!state.stopped) {
+    let transport;
     try {
-      await handleInbound(deps, transport.actions, message);
+      transport = await createSpectrumTransport({
+        projectId: config.projectId,
+        projectSecret: config.projectSecret,
+      });
+      for await (const message of transport.messages()) {
+        if (state.stopped) break;
+        if (!isAllowed(config, message.senderId)) {
+          console.error(`ignored non-allowlisted sender ${message.senderId}`);
+          continue;
+        }
+        if (!message.text.trim()) continue;
+        try {
+          await handleInbound(deps, transport.actions, message);
+        } catch (err) {
+          console.error(`check failed for ${message.id}:`, (err as Error).message);
+          await transport.actions
+            .reply(message, "Couldn't finish that check. Try again in a minute.")
+            .catch(() => {});
+        }
+      }
+      console.error("quash: stream ended cleanly; reconnecting in 5s.");
+      await new Promise((r) => setTimeout(r, 5_000));
     } catch (err) {
-      console.error(`check failed for ${message.id}:`, (err as Error).message);
-      await transport.actions
-        .reply(message, "Couldn't finish that check. Try again in a minute.")
-        .catch(() => {});
+      console.error("quash: stream dropped, reconnecting in 10s:", (err as Error).message);
+      await new Promise((r) => setTimeout(r, 10_000));
     }
   }
   console.error("quash: loop ended.");
